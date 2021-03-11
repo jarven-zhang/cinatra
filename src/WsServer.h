@@ -6,6 +6,7 @@
 #include <atomic>
 #include <mutex>
 #include <functional>
+#include <unordered_map>
 
 typedef std::shared_ptr<cinatra::conn_type> wscon;
 typedef std::function<void(std::string)> WsServerCallback;
@@ -25,5 +26,8 @@ private:
 	std::map<uint64_t, wscon> m_wsconMap;
 	std::atomic<uint64_t> m_nextId;
 	WsServerCallback m_cb;
+
+	//std::unordered_map<cinatra::request, const std::string > m_connectMap;
+	std::unordered_map<int , const std::string > m_connectMap;
 };
 
